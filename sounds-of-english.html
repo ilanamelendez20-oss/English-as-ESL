@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 44 Sounds of English — Articulation Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b2440;
+    --ink-soft:#46506e;
+    --paper:#faf6ee;
+    --paper-2:#f3ecdf;
+    --line:#d9cfbd;
+    --teal:#0d8f8f;        /* vowels */
+    --teal-deep:#0a6a6a;
+    --teal-wash:#dcefef;
+    --coral:#e2674a;       /* consonants / soft tissue */
+    --coral-soft:#f4a896;
+    --coral-wash:#fbe2da;
+    --gold:#d99a1f;        /* spanish track */
+    --gold-wash:#f8ecc9;
+    --tongue:#ef7d63;
+    --tongue-deep:#d85a3e;
+    --enamel:#fffaf0;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:18px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+
+  /* ---------- type ---------- */
+  h1,h2,h3,.disp{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.04}
+  .mono{font-family:"DM Mono",ui-monospace,monospace}
+  .eyebrow{
+    font-family:"DM Mono",monospace;font-size:.74rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--teal-deep);margin:0 0 .6rem;
+  }
+  .eyebrow.c-con{color:var(--coral)}
+  .eyebrow.c-sp{color:var(--gold)}
+  p{margin:.7em 0}
+  a{color:var(--teal-deep);text-decoration-thickness:1px;text-underline-offset:2px}
+
+  /* ---------- sound chips ---------- */
+  .chip{
+    display:inline-flex;align-items:baseline;gap:.5ch;white-space:nowrap;
+    font-family:"DM Mono",monospace;font-weight:500;font-size:.82em;
+    padding:.18em .6em;border-radius:999px;border:1.5px solid var(--line);
+    background:#fff;
+  }
+  .chip b{font-size:1.05em;letter-spacing:.01em}
+  .chip i{font-style:normal;color:var(--ink-soft);font-size:.82em}
+  .chip.v{border-color:var(--teal);background:var(--teal-wash)}
+  .chip.v b{color:var(--teal-deep)}
+  .chip.c{border-color:var(--coral-soft);background:var(--coral-wash)}
+  .chip.c b{color:var(--tongue-deep)}
+
+  /* tappable audio chips */
+  .chip.sayable{cursor:pointer;position:relative;transition:transform .12s ease, box-shadow .12s ease}
+  .chip.sayable::after{
+    content:"\25B6";position:absolute;top:-.5em;right:-.4em;
+    font-size:.5em;line-height:1;color:#fff;background:var(--ink-soft);
+    border-radius:50%;width:1.7em;height:1.7em;display:flex;align-items:center;justify-content:center;
+    padding-left:.14em;box-shadow:0 1px 2px rgba(27,36,64,.35);
+  }
+  .chip.v.sayable::after{background:var(--teal)}
+  .chip.c.sayable::after{background:var(--coral)}
+  .chip.sayable:hover{transform:translateY(-1px);box-shadow:0 4px 10px -5px rgba(27,36,64,.5)}
+  .chip.sayable:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+  .chip.sayable.speaking{box-shadow:0 0 0 3px rgba(13,143,143,.4)}
+  .audio-hint{display:inline-flex;align-items:center;gap:.5ch;font-family:"DM Mono",monospace;font-size:.78rem;letter-spacing:.04em;color:var(--teal-deep);background:var(--teal-wash);border-radius:999px;padding:.3em .9em;margin:.2rem 0 0}
+  .audio-hint .dot{width:.6em;height:.6em;border-radius:50%;background:var(--teal)}
+  .audio-note{font-size:.84rem;color:var(--ink-soft);margin-top:.5rem}
+
+  /* voicing marks */
+  .vx{display:inline-block;width:.95em;height:.95em;vertical-align:-.12em;margin-left:.15em}
+
+  /* ---------- hero ---------- */
+  header.hero{
+    background:
+      radial-gradient(120% 120% at 85% -10%, var(--teal-wash) 0%, transparent 45%),
+      radial-gradient(120% 130% at -10% 110%, var(--coral-wash) 0%, transparent 50%),
+      var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:clamp(28px,6vw,72px) 0 clamp(36px,6vw,64px);
+    overflow:hidden;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(20px,4vw,52px);align-items:center}
+  .hero h1{font-size:clamp(2.5rem,7vw,4.7rem);margin:.1em 0 .25em}
+  .hero h1 .count{
+    display:block;font-size:.42em;letter-spacing:.02em;color:var(--teal-deep);
+    font-weight:700;margin-bottom:.15em;
+  }
+  .hero p.lead{font-size:1.18rem;color:var(--ink-soft);max-width:34ch;margin:.2em 0 1.4rem}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;font-family:"DM Mono",monospace;font-size:.72rem;letter-spacing:.04em}
+  .hero-tags span{padding:.34em .7em;border:1px solid var(--line);border-radius:6px;background:#fffdf8;text-transform:uppercase;color:var(--ink-soft)}
+  .hero-fig{position:relative}
+  .hero-fig figcaption{
+    text-align:center;font-family:"DM Mono",monospace;font-size:.74rem;letter-spacing:.06em;
+    color:var(--ink-soft);margin-top:.4rem;text-transform:uppercase;
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:clamp(40px,7vw,84px) 0;border-bottom:1px solid var(--line)}
+  section.tint-v{background:linear-gradient(var(--paper),#f1f8f7)}
+  section.tint-c{background:linear-gradient(#fbf3ee,var(--paper))}
+  section.tint-sp{background:linear-gradient(#fdf6e3,#fbf3df)}
+  .kicker{display:flex;align-items:center;gap:.8rem;margin-bottom:.4rem}
+  .kicker .no{font-family:"DM Mono",monospace;font-size:.8rem;color:var(--ink-soft);border:1px solid var(--line);border-radius:6px;padding:.1em .5em}
+  h2{font-size:clamp(1.8rem,4.2vw,2.9rem);margin:.1em 0 .5em}
+  h3{font-size:1.28rem;margin:1.6em 0 .3em}
+  .intro{font-size:1.12rem;color:var(--ink-soft);max-width:62ch}
+
+  .note{
+    border-left:3px solid var(--gold);background:var(--gold-wash);
+    padding:.85rem 1.1rem;border-radius:0 10px 10px 0;font-size:1rem;margin:1.4rem 0;
+  }
+  .note .lab{font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#9a6f10;display:block;margin-bottom:.2rem}
+  .note.ga{border-color:var(--teal);background:var(--teal-wash)}
+  .note.ga .lab{color:var(--teal-deep)}
+
+  /* diagram cards */
+  .diagram-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin:1.8rem 0}
+  .dcard{
+    background:#fffdf8;border:1px solid var(--line);border-radius:16px;padding:14px 14px 16px;
+    box-shadow:0 1px 0 #fff inset, 0 10px 24px -18px rgba(27,36,64,.4);
+  }
+  .dcard svg{width:100%;height:auto;display:block}
+  .dcard .dh{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.5rem}
+  .dcard .dh .chip{font-size:.78rem}
+  .dcard .cue{font-size:.92rem;color:var(--ink-soft);margin:.45rem 0 0;line-height:1.45}
+  .dcard .cue b{color:var(--ink);font-weight:600;font-family:"Newsreader"}
+
+  /* big map */
+  .mapwrap{background:#fffdf8;border:1px solid var(--line);border-radius:20px;padding:clamp(16px,3vw,28px);margin:1.6rem 0;box-shadow:0 18px 40px -28px rgba(27,36,64,.5)}
+  .mapwrap svg{width:100%;height:auto}
+  .map-legend{display:flex;flex-wrap:wrap;gap:1rem 1.4rem;margin-top:1rem;font-size:.9rem;color:var(--ink-soft)}
+  .map-legend i{display:inline-block;width:.8em;height:.8em;border-radius:50%;margin-right:.4em;vertical-align:-.05em}
+
+  /* sound map grid */
+  .grid-board{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:9px;margin-top:1.2rem}
+  .grid-board .chip{justify-content:center;flex-direction:column;align-items:center;gap:.15ch;padding:.55em .4em;text-align:center}
+  .group-label{grid-column:1/-1;font-family:"DM Mono",monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:.9rem 0 -.1rem;display:flex;align-items:center;gap:.6rem}
+  .group-label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* pair table */
+  .pairs{width:100%;border-collapse:collapse;margin:1.3rem 0;font-size:.98rem}
+  .pairs th{font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--ink-soft);padding:.5rem .7rem;border-bottom:1.5px solid var(--ink)}
+  .pairs td{padding:.55rem .7rem;border-bottom:1px solid var(--line);vertical-align:middle}
+  .pairs td.mp{font-family:"DM Mono",monospace;font-size:.86rem;color:var(--ink-soft)}
+  .pairs tr:hover td{background:#fffdf6}
+
+  /* spanish confusion cards */
+  .conf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:1.5rem 0}
+  .conf{background:#fffdf8;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:0 0 14px 14px;padding:14px 16px}
+  .conf .pp{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:.25rem}
+  .conf .pp .mono{color:var(--gold);font-weight:500}
+  .conf p{margin:.3rem 0 0;font-size:.96rem;color:var(--ink-soft)}
+  .conf .ex{font-family:"DM Mono",monospace;font-size:.82rem;color:var(--tongue-deep);margin-top:.45rem}
+
+  .callout{
+    background:var(--ink);color:#f4eee0;border-radius:18px;padding:clamp(18px,3vw,30px);margin:1.8rem 0;
+  }
+  .callout .eyebrow{color:var(--gold)}
+  .callout h3{color:#fff;margin-top:.1em}
+  .callout p{color:#d8d2c4}
+  .callout .insert{font-family:"DM Mono",monospace;color:#ffd98a;font-size:.95rem}
+
+  /* resources & structure */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px)}
+  ul.clean{list-style:none;padding:0;margin:.6rem 0}
+  ul.clean li{padding:.5rem 0 .5rem 1.6rem;border-bottom:1px dashed var(--line);position:relative}
+  ul.clean li::before{content:"›";position:absolute;left:.2rem;top:.5rem;color:var(--teal);font-weight:700}
+  ul.clean li b{font-weight:600}
+  ol.steps{list-style:none;counter-reset:s;padding:0;margin:.8rem 0}
+  ol.steps li{counter-increment:s;padding:.7rem 0 .7rem 3rem;position:relative;border-bottom:1px solid var(--line)}
+  ol.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:.7rem;font-family:"DM Mono",monospace;font-size:.82rem;color:var(--coral);font-weight:500;background:var(--coral-wash);border-radius:6px;padding:.1em .5em}
+  ol.steps li b{font-family:"Bricolage Grotesque",sans-serif;font-weight:700}
+
+  footer{padding:34px 0 50px;color:var(--ink-soft);font-size:.86rem}
+
+  .listen-cta{
+    display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;
+    background:linear-gradient(135deg,#0d8f8f,#0a6a6a);color:#eafaf8;
+    border-radius:16px;padding:16px 18px;margin:.6rem 0 1rem;
+    box-shadow:0 14px 30px -18px rgba(10,106,106,.9);
+  }
+  .listen-cta .lab{font-family:"DM Mono",monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#a6e6e2;display:block;margin-bottom:.15rem}
+  .listen-cta b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.08rem;color:#fff}
+  .listen-cta p{margin:.35rem 0 0;font-size:.92rem;color:#d6f2ef;max-width:46ch}
+  .listen-cta em{color:#fff;font-style:normal;font-weight:600}
+  .listen-btn{
+    flex:0 0 auto;background:#fff;color:#0a6a6a;text-decoration:none;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;
+    padding:.7em 1.2em;border-radius:10px;white-space:nowrap;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .listen-btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px -8px rgba(0,0,0,.4)}
+  .listen-btn:focus-visible{outline:3px solid #ffd98a;outline-offset:2px}
+  footer .mono{font-size:.8rem}
+
+  @media(max-width:760px){
+    body{font-size:17px}
+    .hero-grid{grid-template-columns:1fr;gap:8px}
+    .hero-fig{max-width:340px;margin:0 auto}
+    .cols{grid-template-columns:1fr;gap:20px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .pulse,.buzz{animation:none !important}
+  }
+  .pulse{transform-box:fill-box;transform-origin:center;animation:breathe 3.4s ease-in-out infinite}
+  @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+  .buzz{animation:buzz 1.6s ease-in-out infinite}
+  @keyframes buzz{0%,100%{opacity:.45}50%{opacity:1}}
+</style>
+</head>
+<body>
+
+<!-- ============ shared SVG frame ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ef7d63"/>
+      <stop offset="1" stop-color="#d85a3e"/>
+    </linearGradient>
+    <!-- mouth frame: roof, teeth, back wall (lips + tongue drawn per-sound) -->
+    <g id="mf">
+      <!-- inner mouth fill -->
+      <path d="M52 96 Q120 58 192 92 L196 150 Q120 172 56 150 Z" fill="#fbeef0"/>
+      <!-- pharynx / back wall -->
+      <path d="M192 78 Q204 120 190 168" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+      <!-- hard palate + alveolar ridge (roof) -->
+      <path d="M50 92 Q58 70 100 60 Q150 50 186 74 Q192 80 192 88" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+      <!-- uvula -->
+      <path d="M188 86 q5 9 -1 15 q-6 -5 -4 -14" fill="#f2c0c4" stroke="var(--ink)" stroke-width="1.6"/>
+      <!-- upper teeth -->
+      <path d="M44 90 l14 0 l-2 14 l-10 0 z" fill="var(--enamel)" stroke="var(--ink)" stroke-width="2.2" stroke-linejoin="round"/>
+      <!-- lower teeth -->
+      <path d="M44 150 l14 0 l-2 -14 l-10 0 z" fill="var(--enamel)" stroke="var(--ink)" stroke-width="2.2" stroke-linejoin="round"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Pronunciation app · content reference</p>
+      <h1><span class="count">20 vowels + 24 consonants</span>The 44 Sounds of English</h1>
+      <p class="lead">A working map of every English sound — what it is, where the tongue sits, and the moves Spanish speakers find hardest.</p>
+      <div class="hero-tags">
+        <span>RP spine · GA flagged</span>
+        <span>plain letters + anchor word</span>
+        <span>Spanish-L1 focus track</span>
+      </div>
+    </div>
+    <figure class="hero-fig">
+      <!-- hero sagittal: "ee" -->
+      <svg viewBox="0 0 240 210" role="img" aria-label="Side view of the mouth forming the ee sound: tongue high and front, lips spread">
+        <!-- face hint -->
+        <path d="M232 8 Q150 2 96 26 Q40 50 30 110 Q24 156 40 198" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="2 6"/>
+        <use href="#mf"/>
+        <!-- tongue: high & front (ee) -->
+        <path class="pulse" d="M58 120 C76 92 92 66 116 68 C148 70 174 100 188 124 L188 166 Q120 182 58 166 Z" fill="url(#tg)" stroke="var(--tongue-deep)" stroke-width="2.4"/>
+        <!-- lips: spread (flat, wide) -->
+        <ellipse cx="34" cy="98" rx="17" ry="7" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+        <ellipse cx="34" cy="142" rx="17" ry="7" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+        <!-- direction hint -->
+        <path d="M120 50 q0 -10 0 -10" stroke="none"/>
+        <circle cx="116" cy="70" r="4.5" fill="#fff" stroke="var(--teal-deep)" stroke-width="2.5"/>
+        <text x="128" y="46" font-family="DM Mono, monospace" font-size="12" fill="var(--teal-deep)">high · front</text>
+      </svg>
+      <figcaption>“ee” as in sheep — tongue high &amp; front</figcaption>
+    </figure>
+  </div>
+</header>
+
+<!-- ============ how to read ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker"><span class="no">01</span><p class="eyebrow" style="margin:0">How to read a sound</p></div>
+    <h2>Letters, plus an anchor word</h2>
+    <p class="intro">Every sound is written in plain letters and tied to a real example word. Letters alone can’t separate all 44 sounds — a few share a spelling — so the <b>anchor word is the source of truth</b>. The two “th” sounds and the strong vs. weak “uh” are told apart by their label and example, never by spelling alone.</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin:1.4rem 0">
+      <span class="chip v"><b>ee</b> <i>as in sheep</i></span>
+      <span class="chip c"><b>sh</b> <i>as in ship</i></span>
+      <span class="chip c"><b>th</b> <i>as in think · voiceless</i></span>
+      <span class="chip c"><b>th</b> <i>as in this · voiced</i></span>
+      <span class="chip v"><b>uh</b> <i>as in cup · strong</i></span>
+      <span class="chip v"><b>uh</b> <i>as in about · weak</i></span>
+    </div>
+    <p class="audio-hint"><span class="dot"></span> Tap any sound on this page to hear its example word in American English</p>
+
+    <div class="note ga">
+      <span class="lab">Which English?</span>
+      The clean “20 + 24 = 44” count is the British <b>RP</b> model, so RP is the spine here. <b>General American</b> is rhotic (the “r” sounds after vowels), merges or drops some RP vowels — the “eer/air/oor” gliding vowels mostly don’t exist as separate sounds — and adds r-coloured vowels. Pick one spine and flag the differences rather than mixing them.
+    </div>
+  </div>
+</section>
+
+<!-- ============ vowel tongue map ============ -->
+<section class="tint-v">
+  <div class="wrap">
+    <div class="kicker"><span class="no">02</span><p class="eyebrow" style="margin:0">The vowels · 20</p></div>
+    <h2>A map of where the tongue goes</h2>
+    <p class="intro">The 12 pure vowels live in the space behind your teeth. Left–right is how <b>front or back</b> the tongue bunches; top–bottom is how <b>high or low</b> it sits. “Short” and “long” only describe these 12 — the other 8 are diphthongs that glide. And length matters less than quality: <span class="chip v" style="font-size:.78rem"><b>ih</b> <i>ship</i></span> and <span class="chip v" style="font-size:.78rem"><b>ee</b> <i>sheep</i></span> differ mainly in tongue tension and position, not duration.</p>
+
+    <div class="mapwrap">
+      <svg viewBox="0 0 640 380" role="img" aria-label="Vowel tongue-position chart. Horizontal axis front to back, vertical axis high to low.">
+        <!-- axes labels -->
+        <text x="60" y="26" font-family="DM Mono,monospace" font-size="13" fill="var(--ink-soft)" letter-spacing="2">FRONT OF MOUTH</text>
+        <text x="470" y="26" font-family="DM Mono,monospace" font-size="13" fill="var(--ink-soft)" letter-spacing="2">BACK</text>
+        <text x="14" y="70" font-family="DM Mono,monospace" font-size="13" fill="var(--ink-soft)" transform="rotate(-90 14 70)" letter-spacing="2">HIGH · CLOSE</text>
+        <text x="14" y="350" font-family="DM Mono,monospace" font-size="13" fill="var(--ink-soft)" transform="rotate(-90 14 350)" letter-spacing="2">LOW · OPEN</text>
+        <!-- trapezoid -->
+        <path d="M70 50 L560 50 L500 330 L150 330 Z" fill="#ffffff" stroke="var(--teal)" stroke-width="2.5" opacity=".9"/>
+        <path d="M70 50 L560 50 L500 330 L150 330 Z" fill="none" stroke="var(--teal)" stroke-width="1" stroke-dasharray="3 5" opacity=".5"/>
+        <!-- gridlines -->
+        <line x1="100" y1="190" x2="530" y2="190" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 6"/>
+        <!-- vowel points: cx,cy + label -->
+        <!-- helper style via inline -->
+        <g font-family="DM Mono,monospace" font-size="15">
+          <!-- ee high front -->
+          <circle cx="92" cy="62" r="8" fill="var(--teal)"/><text x="106" y="60" fill="var(--ink)">ee</text><text x="106" y="76" fill="var(--ink-soft)" font-size="11">sheep</text>
+          <!-- ih just below/back -->
+          <circle cx="150" cy="92" r="8" fill="var(--teal)"/><text x="164" y="90" fill="var(--ink)">ih</text><text x="164" y="106" fill="var(--ink-soft)" font-size="11">ship</text>
+          <!-- eh front mid -->
+          <circle cx="150" cy="172" r="8" fill="var(--teal)"/><text x="164" y="170" fill="var(--ink)">eh</text><text x="164" y="186" fill="var(--ink-soft)" font-size="11">dress</text>
+          <!-- a low front -->
+          <circle cx="178" cy="300" r="8" fill="var(--teal)"/><text x="192" y="298" fill="var(--ink)">a</text><text x="192" y="314" fill="var(--ink-soft)" font-size="11">cat</text>
+          <!-- er central -->
+          <circle cx="300" cy="170" r="8" fill="var(--teal-deep)"/><text x="314" y="168" fill="var(--ink)">er</text><text x="314" y="184" fill="var(--ink-soft)" font-size="11">nurse</text>
+          <!-- uh weak central -->
+          <circle cx="320" cy="150" r="8" fill="var(--teal-deep)"/><text x="334" y="138" fill="var(--ink)">uh · weak</text><text x="334" y="154" fill="var(--ink-soft)" font-size="11">about</text>
+          <!-- uh strong low-central -->
+          <circle cx="330" cy="250" r="8" fill="var(--teal-deep)"/><text x="344" y="248" fill="var(--ink)">uh · strong</text><text x="344" y="264" fill="var(--ink-soft)" font-size="11">cup</text>
+          <!-- oo high back -->
+          <circle cx="525" cy="66" r="8" fill="var(--coral)"/><text x="470" y="60" fill="var(--ink)" text-anchor="end">oo</text><text x="470" y="76" fill="var(--ink-soft)" font-size="11" text-anchor="end">goose</text>
+          <!-- uu near-high back -->
+          <circle cx="470" cy="96" r="8" fill="var(--coral)"/><text x="456" y="94" fill="var(--ink)" text-anchor="end">uu</text><text x="456" y="110" fill="var(--ink-soft)" font-size="11" text-anchor="end">foot</text>
+          <!-- aw mid back -->
+          <circle cx="500" cy="200" r="8" fill="var(--coral)"/><text x="486" y="198" fill="var(--ink)" text-anchor="end">aw</text><text x="486" y="214" fill="var(--ink-soft)" font-size="11" text-anchor="end">thought</text>
+          <!-- o low back -->
+          <circle cx="478" cy="288" r="8" fill="var(--coral)"/><text x="464" y="286" fill="var(--ink)" text-anchor="end">o</text><text x="464" y="302" fill="var(--ink-soft)" font-size="11" text-anchor="end">lot</text>
+          <!-- ah low back -->
+          <circle cx="430" cy="306" r="8" fill="var(--coral)"/><text x="416" y="304" fill="var(--ink)" text-anchor="end">ah</text><text x="416" y="320" fill="var(--ink-soft)" font-size="11" text-anchor="end">start</text>
+        </g>
+      </svg>
+      <div class="map-legend">
+        <span><i style="background:var(--teal)"></i>front vowels</span>
+        <span><i style="background:var(--teal-deep)"></i>central vowels</span>
+        <span><i style="background:var(--coral)"></i>back vowels</span>
+        <span style="color:var(--ink-soft)">12 pure vowels shown · 8 diphthongs glide <em>between</em> these positions</span>
+      </div>
+    </div>
+
+    <h3>Tongue, from the side</h3>
+    <p class="intro">The map flattened above is really a side view. Here’s the same handful of sounds as cross-sections — watch the soft body of the tongue rise, fall, and slide back, and the lips spread or round.</p>
+
+    <div class="diagram-row">
+      <!-- ee -->
+      <div class="dcard">
+        <svg viewBox="0 0 240 210" role="img" aria-label="ee: tongue high and front, lips spread wide">
+          <use href="#mf"/>
+          <path d="M58 120 C76 92 92 66 116 68 C148 70 174 100 188 124 L188 166 Q120 182 58 166 Z" fill="url(#tg)" stroke="var(--tongue-deep)" stroke-width="2.4"/>
+          <ellipse cx="34" cy="100" rx="17" ry="6" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+          <ellipse cx="34" cy="140" rx="17" ry="6" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+        </svg>
+        <div class="dh"><span class="chip v"><b>ee</b> <i>sheep</i></span></div>
+        <p class="cue">Tongue <b>high &amp; front</b>, tense; lips spread <b>wide</b>.</p>
+      </div>
+      <!-- ih -->
+      <div class="dcard">
+        <svg viewBox="0 0 240 210" role="img" aria-label="ih: tongue high front but relaxed and slightly lower than ee">
+          <use href="#mf"/>
+          <path d="M58 124 C78 102 96 84 122 86 C152 88 174 106 188 128 L188 166 Q120 182 58 166 Z" fill="url(#tg)" stroke="var(--tongue-deep)" stroke-width="2.4"/>
+          <ellipse cx="34" cy="100" rx="16" ry="8" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+          <ellipse cx="34" cy="140" rx="16" ry="8" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+        </svg>
+        <div class="dh"><span class="chip v"><b>ih</b> <i>ship</i></span></div>
+        <p class="cue">High-front but <b>relaxed</b> — drops a touch from “ee”; lips slightly spread.</p>
+      </div>
+      <!-- a -->
+      <div class="dcard">
+        <svg viewBox="0 0 240 210" role="img" aria-label="a: tongue low and front, jaw dropped open">
+          <use href="#mf"/>
+          <!-- jaw drops: redraw lower teeth lower -->
+          <path d="M44 168 l14 0 l-2 -14 l-10 0 z" fill="var(--enamel)" stroke="var(--ink)" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M58 150 C84 138 108 134 132 138 C156 142 176 150 188 160 L188 182 Q120 196 58 180 Z" fill="url(#tg)" stroke="var(--tongue-deep)" stroke-width="2.4"/>
+          <ellipse cx="34" cy="96" rx="15" ry="8" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+          <ellipse cx="34" cy="156" rx="15" ry="9" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+        </svg>
+        <div class="dh"><span class="chip v"><b>a</b> <i>cat</i></span></div>
+        <p class="cue">Tongue <b>low &amp; front</b>; the <b>jaw drops open</b>.</p>
+      </div>
+      <!-- oo -->
+      <div class="dcard">
+        <svg viewBox="0 0 240 210" role="img" aria-label="oo: tongue high and back, lips firmly rounded">
+          <use href="#mf"/>
+          <path d="M58 142 C86 136 110 128 132 106 C150 88 166 76 186 84 L188 166 Q120 182 58 166 Z" fill="url(#tg)" stroke="var(--tongue-deep)" stroke-width="2.4"/>
+          <!-- rounded protruded lips -->
+          <path d="M22 100 q-10 20 0 40 q14 6 14 -6 l0 -28 q0 -12 -14 -6 z" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+          <circle cx="26" cy="120" r="6" fill="#fbeef0" stroke="var(--ink)" stroke-width="1.6"/>
+        </svg>
+        <div class="dh"><span class="chip v"><b>oo</b> <i>goose</i></span></div>
+        <p class="cue">Tongue <b>high &amp; back</b>, tense; lips firmly <b>rounded</b>.</p>
+      </div>
+      <!-- weak uh -->
+      <div class="dcard">
+        <svg viewBox="0 0 240 210" role="img" aria-label="weak uh schwa: tongue relaxed in the mid centre of the mouth">
+          <use href="#mf"/>
+          <path d="M58 134 C82 120 100 108 122 110 C150 112 172 120 188 134 L188 166 Q120 182 58 166 Z" fill="url(#tg)" stroke="var(--tongue-deep)" stroke-width="2.4"/>
+          <ellipse cx="34" cy="100" rx="15" ry="8" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+          <ellipse cx="34" cy="142" rx="15" ry="8" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.4"/>
+        </svg>
+        <div class="dh"><span class="chip v"><b>uh</b> <i>about · weak</i></span></div>
+        <p class="cue">Fully <b>relaxed, mid-mouth</b> — the most frequent sound in English and the key to natural rhythm.</p>
+      </div>
+    </div>
+
+    <h3>The full vowel inventory</h3>
+    <div class="grid-board">
+      <span class="group-label">Short · 7</span>
+      <span class="chip v"><b>ih</b><i>ship</i></span>
+      <span class="chip v"><b>eh</b><i>dress</i></span>
+      <span class="chip v"><b>a</b><i>cat</i></span>
+      <span class="chip v"><b>uh</b><i>cup · strong</i></span>
+      <span class="chip v"><b>o</b><i>lot</i></span>
+      <span class="chip v"><b>uu</b><i>foot</i></span>
+      <span class="chip v"><b>uh</b><i>about · weak</i></span>
+      <span class="group-label">Long · 5</span>
+      <span class="chip v"><b>ee</b><i>sheep</i></span>
+      <span class="chip v"><b>ah</b><i>start</i></span>
+      <span class="chip v"><b>aw</b><i>thought</i></span>
+      <span class="chip v"><b>oo</b><i>goose</i></span>
+      <span class="chip v"><b>er</b><i>nurse</i></span>
+      <span class="group-label">Diphthongs · 8 — gliding vowels</span>
+      <span class="chip v"><b>ay</b><i>face</i></span>
+      <span class="chip v"><b>eye</b><i>price</i></span>
+      <span class="chip v"><b>oy</b><i>choice</i></span>
+      <span class="chip v"><b>oh</b><i>goat</i></span>
+      <span class="chip v"><b>ow</b><i>mouth</i></span>
+      <span class="chip v"><b>eer</b><i>near</i></span>
+      <span class="chip v"><b>air</b><i>square</i></span>
+      <span class="chip v"><b>oor</b><i>cure</i></span>
+    </div>
+    <div class="note ga">
+      <span class="lab">General American</span>
+      The three “r”-ending gliding vowels — <span class="chip v" style="font-size:.74rem"><b>eer</b><i>near</i></span> <span class="chip v" style="font-size:.74rem"><b>air</b><i>square</i></span> <span class="chip v" style="font-size:.74rem"><b>oor</b><i>cure</i></span> — mostly don’t exist as separate sounds in GA, where the “r” is simply pronounced. Teach them on the RP spine and flag the swap.
+    </div>
+  </div>
+</section>
+
+<!-- ============ consonants ============ -->
+<section class="tint-c">
+  <div class="wrap">
+    <div class="kicker"><span class="no">03</span><p class="eyebrow c-con" style="margin:0">The consonants · 24</p></div>
+    <h2>Same position, voicing flips</h2>
+    <p class="intro">Teach consonants in <b>voiceless / voiced pairs</b>: the mouth holds the same shape, and the only change is whether the vocal folds buzz. There are just <b>two voicing categories</b> — “voiceless” and “unvoiced” are the same thing, never a third option. Put two fingers on your throat: “z” buzzes, “s” doesn’t.</p>
+
+    <div style="display:flex;gap:1.6rem;flex-wrap:wrap;align-items:center;margin:1rem 0 1.4rem;font-size:.95rem;color:var(--ink-soft)">
+      <span style="display:inline-flex;align-items:center;gap:.5rem">
+        <svg class="vx" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--ink-soft)" stroke-width="2"/></svg>
+        <b style="color:var(--ink);font-family:Bricolage Grotesque">Voiceless</b> — no throat buzz
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:.5rem">
+        <svg class="vx" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="var(--coral)"/><path class="buzz" d="M3 10 q2 -5 4 0 t4 0 t4 0 t4 0" fill="none" stroke="#fff" stroke-width="1.6"/></svg>
+        <b style="color:var(--ink);font-family:Bricolage Grotesque">Voiced</b> — folds vibrate
+      </span>
+    </div>
+
+    <h3>Where each pair is made</h3>
+    <p class="intro">Consonants are sorted by <b>place</b> — the spot where the airflow is squeezed. The diagram tracks each pair from the lips at the front to the soft palate at the back.</p>
+
+    <div class="mapwrap">
+      <svg viewBox="0 0 660 300" role="img" aria-label="Side view of the mouth marking the places consonants are formed, from lips at front to soft palate at back.">
+        <!-- scaled mouth frame -->
+        <g transform="translate(40,40) scale(1.15)">
+          <path d="M52 96 Q120 58 192 92 L196 150 Q120 172 56 150 Z" fill="#fbeef0"/>
+          <path d="M192 78 Q204 120 190 168" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M50 92 Q58 70 100 60 Q150 50 186 74 Q192 80 192 88" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M44 90 l14 0 l-2 14 l-10 0 z" fill="var(--enamel)" stroke="var(--ink)" stroke-width="2.2"/>
+          <path d="M44 150 l14 0 l-2 -14 l-10 0 z" fill="var(--enamel)" stroke="var(--ink)" stroke-width="2.2"/>
+          <path d="M62 138 C92 128 120 124 150 130 C170 134 184 140 192 150 L188 166 Q120 178 62 164 Z" fill="url(#tg)" stroke="var(--tongue-deep)" stroke-width="2.2"/>
+          <ellipse cx="34" cy="100" rx="14" ry="9" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.2"/>
+          <ellipse cx="34" cy="142" rx="14" ry="9" fill="var(--coral-soft)" stroke="var(--ink)" stroke-width="2.2"/>
+        </g>
+        <!-- place markers + leader lines -->
+        <g font-family="DM Mono,monospace" font-size="13">
+          <!-- lips (p b, w) -->
+          <circle cx="79" cy="156" r="7" fill="var(--coral)" stroke="#fff" stroke-width="2"/>
+          <line x1="79" y1="156" x2="79" y2="250" stroke="var(--coral)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="79" y="268" text-anchor="middle" fill="var(--ink)">lips</text>
+          <text x="79" y="284" text-anchor="middle" fill="var(--ink-soft)" font-size="11">p b · w · m</text>
+          <!-- lip+teeth (f v) -->
+          <circle cx="95" cy="120" r="7" fill="var(--coral)" stroke="#fff" stroke-width="2"/>
+          <line x1="95" y1="120" x2="150" y2="44" stroke="var(--coral)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="150" y="38" text-anchor="middle" fill="var(--ink)">lip + teeth</text>
+          <text x="150" y="22" text-anchor="middle" fill="var(--ink-soft)" font-size="11">f v</text>
+          <!-- teeth (th) -->
+          <circle cx="112" cy="112" r="7" fill="var(--coral)" stroke="#fff" stroke-width="2"/>
+          <line x1="112" y1="112" x2="250" y2="44" stroke="var(--coral)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="250" y="38" text-anchor="middle" fill="var(--ink)">tongue + teeth</text>
+          <text x="250" y="22" text-anchor="middle" fill="var(--ink-soft)" font-size="11">th · th</text>
+          <!-- ridge (t d s z n l r) -->
+          <circle cx="150" cy="104" r="7" fill="var(--coral)" stroke="#fff" stroke-width="2"/>
+          <line x1="150" y1="104" x2="380" y2="44" stroke="var(--coral)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="380" y="38" text-anchor="middle" fill="var(--ink)">ridge behind teeth</text>
+          <text x="380" y="22" text-anchor="middle" fill="var(--ink-soft)" font-size="11">t d · s z · n l r</text>
+          <!-- hard palate (sh zh ch j y) -->
+          <circle cx="196" cy="108" r="7" fill="var(--coral)" stroke="#fff" stroke-width="2"/>
+          <line x1="196" y1="108" x2="510" y2="120" stroke="var(--coral)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="516" y="116" fill="var(--ink)">hard palate</text>
+          <text x="516" y="132" fill="var(--ink-soft)" font-size="11">sh zh · ch j · y</text>
+          <!-- soft palate (k g ng) -->
+          <circle cx="232" cy="118" r="7" fill="var(--coral)" stroke="#fff" stroke-width="2"/>
+          <line x1="232" y1="118" x2="510" y2="180" stroke="var(--coral)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="516" y="176" fill="var(--ink)">soft palate</text>
+          <text x="516" y="192" fill="var(--ink-soft)" font-size="11">k g · ng</text>
+          <!-- throat (h) -->
+          <circle cx="262" cy="150" r="7" fill="var(--coral)" stroke="#fff" stroke-width="2"/>
+          <line x1="262" y1="150" x2="510" y2="234" stroke="var(--coral)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="516" y="230" fill="var(--ink)">open throat</text>
+          <text x="516" y="246" fill="var(--ink-soft)" font-size="11">h</text>
+        </g>
+      </svg>
+    </div>
+
+    <h3>The 8 voiceless / voiced pairs</h3>
+    <table class="pairs">
+      <thead><tr><th>Voiceless</th><th>Voiced</th><th>Minimal pair</th></tr></thead>
+      <tbody>
+        <tr><td><span class="chip c"><b>p</b><i>pat</i></span></td><td><span class="chip c"><b>b</b><i>bat</i></span></td><td class="mp">pat / bat</td></tr>
+        <tr><td><span class="chip c"><b>t</b><i>tin</i></span></td><td><span class="chip c"><b>d</b><i>din</i></span></td><td class="mp">tin / din</td></tr>
+        <tr><td><span class="chip c"><b>k</b><i>coat</i></span></td><td><span class="chip c"><b>g</b><i>goat</i></span></td><td class="mp">coat / goat</td></tr>
+        <tr><td><span class="chip c"><b>f</b><i>fan</i></span></td><td><span class="chip c"><b>v</b><i>van</i></span></td><td class="mp">fan / van</td></tr>
+        <tr><td><span class="chip c"><b>th</b><i>think</i></span></td><td><span class="chip c"><b>th</b><i>this</i></span></td><td class="mp">think / this</td></tr>
+        <tr><td><span class="chip c"><b>s</b><i>sip</i></span></td><td><span class="chip c"><b>z</b><i>zip</i></span></td><td class="mp">sip / zip</td></tr>
+        <tr><td><span class="chip c"><b>sh</b><i>pressure</i></span></td><td><span class="chip c"><b>zh</b><i>pleasure</i></span></td><td class="mp">pressure / pleasure</td></tr>
+        <tr><td><span class="chip c"><b>ch</b><i>chin</i></span></td><td><span class="chip c"><b>j</b><i>gin</i></span></td><td class="mp">chin / gin</td></tr>
+      </tbody>
+    </table>
+
+    <h3>The remaining 8</h3>
+    <div class="grid-board">
+      <span class="group-label">Voiced sonorants · 7</span>
+      <span class="chip c"><b>m</b><i>man</i></span>
+      <span class="chip c"><b>n</b><i>no</i></span>
+      <span class="chip c"><b>ng</b><i>sing</i></span>
+      <span class="chip c"><b>l</b><i>let</i></span>
+      <span class="chip c"><b>r</b><i>red</i></span>
+      <span class="chip c"><b>w</b><i>wet</i></span>
+      <span class="chip c"><b>y</b><i>yes</i></span>
+      <span class="group-label">Voiceless · 1</span>
+      <span class="chip c"><b>h</b><i>hat</i></span>
+    </div>
+    <p style="font-size:.92rem;color:var(--ink-soft);margin-top:.6rem">8 pairs × 2 = 16, plus 7 sonorants and “h” = <b>24 consonants</b>.</p>
+  </div>
+</section>
+
+<!-- ============ spanish track ============ -->
+<section class="tint-sp">
+  <div class="wrap">
+    <div class="kicker"><span class="no">04</span><p class="eyebrow c-sp" style="margin:0">Spanish-speaker focus · the heart of the app</p></div>
+    <h2>Five vowels meeting twenty</h2>
+    <p class="intro">Spanish runs on 5 vowels (a, e, i, o, u) against English’s ~20, with a simpler syllable shape. That makes the trouble spots <b>few and very teachable</b> — concentrate the drills here.</p>
+
+    <h3>Vowel confusions</h3>
+    <div class="conf-grid">
+      <div class="conf">
+        <div class="pp"><span class="mono">ih</span> vs <span class="mono">ee</span></div>
+        <p>One Spanish “ee” has to split in two. The #1 vowel confusion.</p>
+        <p class="ex">ship / sheep · bit / beat · live / leave</p>
+      </div>
+      <div class="conf">
+        <div class="pp"><span class="mono">a</span> vs <span class="mono">eh</span> vs <span class="mono">uh</span></div>
+        <p>Three English sounds collapsing toward one Spanish vowel.</p>
+        <p class="ex">bat / bet / but · cat / cut · bad / bed</p>
+      </div>
+      <div class="conf">
+        <div class="pp"><span class="mono">uu</span> vs <span class="mono">oo</span></div>
+        <p>Short relaxed vs. long tense back rounding.</p>
+        <p class="ex">full / fool · pull / pool</p>
+      </div>
+      <div class="conf">
+        <div class="pp">the weak <span class="mono">uh</span> &amp; weak forms</div>
+        <p>Spanish gives every vowel its full value, so unstressed syllables don’t reduce. The single biggest driver of a non-native rhythm.</p>
+        <p class="ex">banana · to · of · a · for → “uh”</p>
+      </div>
+    </div>
+
+    <h3>Consonant confusions</h3>
+    <div class="conf-grid">
+      <div class="conf"><div class="pp"><span class="mono">b</span> vs <span class="mono">v</span></div><p>In Spanish these are one sound — a very persistent merger.</p><p class="ex">berry / very · bat / vat · boat / vote</p></div>
+      <div class="conf"><div class="pp">the two <span class="mono">th</span> sounds</div><p>Castilian already has the voiceless “th” (cielo, zapato); Latin American Spanish doesn’t, so speakers often swap in “t,” “s,” or “d.”</p><p class="ex">think · this</p></div>
+      <div class="conf"><div class="pp"><span class="mono">s</span> vs <span class="mono">z</span></div><p>Spanish has no “z” — this hits every -s plural and verb ending.</p><p class="ex">Sue / zoo · place / plays</p></div>
+      <div class="conf"><div class="pp"><span class="mono">sh</span> vs <span class="mono">ch</span></div><p>Many dialects lack “sh,” so it becomes “ch.”</p><p class="ex">sheep / cheap · share / chair</p></div>
+      <div class="conf"><div class="pp"><span class="mono">j</span> · <span class="mono">y</span> · <span class="mono">zh</span></div><p>Easily blurred together.</p><p class="ex">jet / yet · jello / yellow · measure</p></div>
+      <div class="conf"><div class="pp"><span class="mono">h</span></div><p>Silent in Spanish, so it may drop; meanwhile the throaty Spanish “j” gets swapped in for English’s light “h.”</p><p class="ex">house · here · behind</p></div>
+      <div class="conf"><div class="pp"><span class="mono">ng</span></div><p>Tendency to add a hard “g” (“sing-guh”) or swap in “n.”</p><p class="ex">sing · singer</p></div>
+      <div class="conf"><div class="pp"><span class="mono">r</span></div><p>The Spanish tapped/trilled r vs. the English gliding r — one of the most audible markers.</p><p class="ex">red · car · around</p></div>
+      <div class="conf"><div class="pp">dark <span class="mono">l</span></div><p>English makes the end-of-syllable “l” heavy and dark; Spanish “l” stays light and clear.</p><p class="ex">milk · full · well</p></div>
+    </div>
+
+    <div class="callout">
+      <p class="eyebrow">Signature pattern · syllable structure</p>
+      <h3>The “eh” before s-clusters</h3>
+      <p>Spanish words don’t begin with s + consonant, so an “eh” gets added in front. The clearest Spanish-English fingerprint:</p>
+      <p class="insert">school → eschool · Spain → Espain · student → estudent · special → especial</p>
+      <p style="margin-top:1rem">Two more cluster habits to drill: <b style="color:#fff">final consonants dropped or de-voiced</b> (dog → “dok,” big → “bik,” and → “an”), since Spanish syllables usually end in a vowel; and <b style="color:#fff">cluster simplification</b> in words like texts, asked, sixths, worlds.</p>
+    </div>
+
+    <div class="note">
+      <span class="lab">Rhythm beats any single sound</span>
+      English is <b>stress-timed</b> — it squeezes unstressed syllables, which is why the weak “uh” exists. Spanish is <b>syllable-timed</b>, giving each syllable near-equal time. Teaching rhythm, sentence stress, and weak forms does more for intelligibility than perfecting any one sound.
+    </div>
+  </div>
+</section>
+
+<!-- ============ structure + resources ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker"><span class="no">05</span><p class="eyebrow" style="margin:0">Building it</p></div>
+    <h2>App structure &amp; resources</h2>
+    <div class="cols">
+      <div>
+        <h3>Suggested screens</h3>
+        <ol class="steps">
+          <li><b>The Sound Map</b> — all 44 sounds; tap one for audio + articulation animation.</li>
+          <li><b>Vowels</b> — short / long / diphthongs, each with spelling, example words, audio, mouth animation, minimal-pair drill.</li>
+          <li><b>Consonants</b> — the 8 voiceless/voiced pairs, the sonorants, and “h”.</li>
+          <li><b>Spanish-Speaker Track</b> — drills for the confusions above, plus dedicated s-cluster and final-consonant modules.</li>
+          <li><b>Listen &amp; Discriminate</b> — A/B minimal pairs (“ship or sheep?”) before production.</li>
+          <li><b>Produce &amp; Compare</b> — record the learner, play back beside the native model.</li>
+          <li><b>Rhythm &amp; Connected Speech</b> — the weak “uh,” weak forms, sentence stress.</li>
+        </ol>
+        <p style="font-size:.94rem;color:var(--ink-soft)">An “L1 = Spanish” toggle surfaces the contrastive tips and reorders drills by difficulty; track progress per sound; offer both isolated-sound and in-word/in-sentence views.</p>
+      </div>
+      <div>
+        <h3>Verified resources · American English</h3>
+        <div class="listen-cta">
+          <div>
+            <span class="lab">Listen first</span>
+            <b>University of Iowa — Sounds of Speech</b>
+            <p>Tap any American-English sound to hear native audio <em>and</em> watch an animated cutaway of the tongue and lips — the working version of the diagrams above. (Spanish is built in too, so you can play the Spanish sound beside the English one.)</p>
+          </div>
+          <a class="listen-btn" href="https://soundsofspeech.uiowa.edu/english/english.html" target="_blank" rel="noopener">▶ Hear the sounds</a>
+        </div>
+        <ul class="clean">
+          <li><b>American English Sounds</b> (Univ. of Iowa, free) — per-sound pages to <em>hear</em>, <em>compare</em> minimal pairs, and practice. Closest match to this app’s structure. <a href="https://americanenglishsounds.net/" target="_blank" rel="noopener">americanenglishsounds.net</a></li>
+          <li><b>Pronuncian</b> — the 43 sounds of American English with free listen-and-repeat audio for each. <a href="https://pronuncian.com/sounds" target="_blank" rel="noopener">pronuncian.com/sounds</a></li>
+          <li><b>American IPA Chart</b> — interactive General American chart, click a sound to hear it. <a href="https://americanipachart.com/" target="_blank" rel="noopener">americanipachart.com</a></li>
+          <li><b>Rachel’s English</b> (YouTube) — American slow-motion mouth/tongue close-ups, one video per sound.</li>
+          <li><b>Sounds American</b> — self-study American chart with a human-face view of each sound. <a href="https://soundsamerican.net/" target="_blank" rel="noopener">soundsamerican.net</a></li>
+        </ul>
+        <div class="note ga" style="margin-top:1rem">
+          <span class="lab">Heads-up</span>
+          These tools label sounds with the standard linguist symbols, not the plain spellings used here. When you open them, <b>match by the example word</b> — your “sh as in ship” is their symbol sitting on the “ship” sound.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="mono">ESL Pronunciation App · articulation reference · RP inventory with GA flagged.</p>
+    <p style="margin-top:.3rem">Plain-letter spellings throughout — always paired with an anchor word, never linguist symbols. Diagrams are stylised cross-sections meant to show tongue height, frontness, and lip shape, not exact anatomy.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if(!('speechSynthesis' in window)) return;            // unsupported → chips stay plain text
+  var synth = window.speechSynthesis;
+  var voice = null;
+  function pickVoice(){
+    var vs = synth.getVoices() || [];
+    voice = vs.find(function(v){return /en[-_]US/i.test(v.lang)})
+         || vs.find(function(v){return /^en/i.test(v.lang)})
+         || null;
+  }
+  pickVoice();
+  if('onvoiceschanged' in synth){ synth.onvoiceschanged = pickVoice; }
+
+  function wordFromChip(chip){
+    var i = chip.querySelector('i');
+    if(!i) return null;
+    var t = (i.textContent || '')
+      .replace(/^\s*as in\s+/i,'')      // drop a leading "as in"
+      .split('\u00B7')[0]               // drop the label after the middle dot
+      .replace(/[^A-Za-z' ]/g,' ')
+      .trim();
+    return t || null;
+  }
+
+  function speak(word, chip){
+    if(!word) return;
+    try{ synth.cancel(); }catch(e){}
+    var u = new SpeechSynthesisUtterance(word);
+    u.lang = 'en-US';
+    if(voice) u.voice = voice;
+    u.rate = 0.85;
+    if(chip){
+      chip.classList.add('speaking');
+      var clear = function(){ chip.classList.remove('speaking'); };
+      u.onend = clear; u.onerror = clear;
+    }
+    synth.speak(u);
+  }
+
+  document.querySelectorAll('.chip').forEach(function(chip){
+    var word = wordFromChip(chip);
+    if(!word) return;
+    chip.classList.add('sayable');
+    chip.setAttribute('role','button');
+    chip.setAttribute('tabindex','0');
+    chip.setAttribute('aria-label','Play the word ' + word);
+    chip.setAttribute('title','Play \u201C' + word + '\u201D');
+    chip.addEventListener('click', function(){ speak(word, chip); });
+    chip.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); speak(word, chip); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
